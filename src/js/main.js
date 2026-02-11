@@ -33,12 +33,11 @@ function initGame() {
   score1El.textContent = '0';
   current0El.textContent = '0';
   current1El.textContent = '0';
-  // cambiar la clase player--active al jugador 1
-  player0El.classList.add('player--active');
-  player1El.classList.remove('player--active');
-  // Qutar la clase player--winner al jugador ganador
+
   player0El.classList.remove('player--winner');
   player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
 }
 
 initGame();
@@ -78,25 +77,21 @@ btnHold.addEventListener('click', () => {
   if (activePlayer === 0) score0El.textContent = score[activePlayer];
   else score1El.textContent = score[activePlayer];
 
-  //TODO evaluar si el jugador activo gana
-  // evalua si score >= 10 y si lo es, current player gana
   if (score[activePlayer] >= 10) {
+    // ganar el juego
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.add('player--winner');
     document
       .querySelector(`.player--${activePlayer}`)
       .classList.remove('player--active');
+    // ocultar el dado
+    // imgDice.style.display = 'none';
     imgDice.classList.add('hidden');
-    // TODO quiero que salga un mensaje de ganador con un html h2: ¡¡GANADOR!!
-    document.querySelector(`#name--${activePlayer}`).textContent =
-      `¡¡GANADOR!!`;
-    //TODO desactivar el botón de tirar dado
   } else {
+    // cambiar el jugador activo y resetear el score actual
     switchPlayer();
   }
-
-  //alert(`Player ${activePlayer + 1} wins!`);
 });
 
 // evento nuevo juego

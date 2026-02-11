@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   publicDir: 'public',
   root: './',
+  base: '/juego-dado/',
   build: {
     outDir: 'dist',
     rollupOptions: {
