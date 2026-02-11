@@ -50,7 +50,6 @@ btnRoll.addEventListener('click', () => {
   // generar número aleatorio entre 1 y 6 y lo asignamos a la imagen del dado
   const dice = Math.trunc(Math.random() * 6) + 1;
   imgDice.src = `/images/dice-${dice}.png`;
-
   // mostrar el dado  // imgDice.style.display = 'block';
   imgDice.classList.remove('hidden');
 
@@ -78,8 +77,6 @@ btnHold.addEventListener('click', () => {
   // opción larga:
   if (activePlayer === 0) score0El.textContent = score[activePlayer];
   else score1El.textContent = score[activePlayer];
-  // cambiar el jugador activo y resetea el current score
-  switchPlayer();
 
   //TODO evaluar si el jugador activo gana
   // evalua si score >= 10 y si lo es, current player gana
@@ -94,8 +91,12 @@ btnHold.addEventListener('click', () => {
     // TODO quiero que salga un mensaje de ganador con un html h2: ¡¡GANADOR!!
     document.querySelector(`#name--${activePlayer}`).textContent =
       `¡¡GANADOR!!`;
-    //alert(`Player ${activePlayer + 1} wins!`);
+    //TODO desactivar el botón de tirar dado
+  } else {
+    switchPlayer();
   }
+
+  //alert(`Player ${activePlayer + 1} wins!`);
 });
 
 // evento nuevo juego
